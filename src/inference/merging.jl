@@ -252,7 +252,7 @@ diff_small(t1::mat, t2::mat, diff_tol) = abs(t1.len-t2.len) < diff_tol;
 get_count_mat(t::mat) = t.count_mat;
 
 function merging_count_mats(count_mats, new_pos, data, ic_shrink_t, diff_tol; allr_thresh=0.25)
-    count_mats_c = mat_complement.(count_mats);
+    count_mats_c = uCDL.mat_complement.(count_mats);
     pfms = countmat2pfm.(count_mats);
     pfms_c = reverse.(pfms);
 
@@ -312,8 +312,8 @@ function get_result_merged_mat(merged_i_1_info,
 end
 
 function get_merged_count_mat(data, modified_vec_positions, merged_i_1_info)
-    those_count_mats = Cdlunroll.countmat.(
-                [Cdlunroll.get_strs_ignore_out_of_range(data, position)
+    those_count_mats = countmat.(
+                [get_strs_ignore_out_of_range(data, position)
                     for position in modified_vec_positions]);
     merged_count_mat = those_count_mats[1];
     for (ind,cm) in enumerate(@view those_count_mats[2:end])
@@ -391,7 +391,7 @@ all_vec_pos_incr(
     vec_pos_incr.((@view ps_vec[inds]), front_Δ, back_Δ)
 
 function ic_col(count_mat) # assume bg = 0.25
-    pfm = Cdlunroll.countmat2pfm(count_mat);
+    pfm = countmat2pfm(count_mat);
     2 .+ sum(pfm .* log2.(pfm), dims=1)
 end
 
@@ -408,11 +408,11 @@ end
 function compare_two_triplets_allr(cmat_i, cmat_j)
     i_lq_j = cmat_i.len ≤ cmat_j.len 
     if i_lq_j
-        allrs_fls_ij = Cdlunroll.allr_at_offset(cmat_i.count_mat, 
+        allrs_fls_ij = allr_at_offset(cmat_i.count_mat, 
                                         cmat_j.count_mat, 
                                         cmat_i.pfm, 
                                         cmat_j.pfm)
-        allrs_fls_ijc = Cdlunroll.allr_at_offset(cmat_i.count_mat, 
+        allrs_fls_ijc = allr_at_offset(cmat_i.count_mat, 
                                           cmat_j.count_mat_c, 
                                           cmat_i.pfm, 
                                           cmat_j.pfm_c)
@@ -430,11 +430,11 @@ function compare_two_triplets_allr(cmat_i, cmat_j)
 
         return i_lq_j, j_comp, allr_i_lq_j, offset, nothing, right_inc
     else
-        allrs_fls_ji = Cdlunroll.allr_at_offset(cmat_j.count_mat, 
+        allrs_fls_ji = allr_at_offset(cmat_j.count_mat, 
                                         cmat_i.count_mat, 
                                         cmat_j.pfm, 
                                         cmat_i.pfm)
-        allrs_fls_jci = Cdlunroll.allr_at_offset(cmat_j.count_mat_c, 
+        allrs_fls_jci = allr_at_offset(cmat_j.count_mat_c, 
                                           cmat_i.count_mat, 
                                           cmat_j.pfm_c, 
                                           cmat_i.pfm)

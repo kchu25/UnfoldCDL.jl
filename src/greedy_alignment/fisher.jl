@@ -52,7 +52,7 @@ end
 get_both_activate_counts(ms::motifs) =
     get_activate_counts(ms),  get_activate_counts(ms; bg=true)
 
-function get_fisher_p_values(ms::motifs, data; test=false)
+function get_fisher_p_values_(ms::motifs, data; test=false)
     (!test && isnothing(ms.positions)) && scan_trainset_cpu!(ms, data, true);
     test && scan_testset!(ms, data);
     activate_counts, activate_counts_bg = get_both_activate_counts(ms);

@@ -42,12 +42,12 @@ function feed_dataloader(data_matrix, hp)
 end
 
 function training_prep(M, f, batch_size, K_c, gamma_1, pool_mask_len, pool_stride, data_matrix, learning_rate)
-    hp              = Cdlunroll.HyperParam(batch_size, f, f*4, M, K_c, 1, gamma_1, pool_mask_len, pool_stride);
-    data_load       = Cdlunroll.feed_dataloader(data_matrix, hp);
-    len             = Cdlunroll.length_info(data_load, data_matrix, hp)
-    projs           = Cdlunroll.projectors(hp, len);
-    ffts            = Cdlunroll.cuda_fft_plans(len, hp);
-    cdl             = Cdlunroll.CDL(hp, 1, K_c+1);
+    hp              = HyperParam(batch_size, f, f*4, M, K_c, 1, gamma_1, pool_mask_len, pool_stride);
+    data_load       = feed_dataloader(data_matrix, hp);
+    len             = length_info(data_load, data_matrix, hp)
+    projs           = projectors(hp, len);
+    ffts            = cuda_fft_plans(len, hp);
+    cdl             = CDL(hp, 1, K_c+1);
     ps              = Flux.params(cdl);
     # opt             = Flux.AdaBelief()
     opt             = Flux.AdaBelief(learning_rate)

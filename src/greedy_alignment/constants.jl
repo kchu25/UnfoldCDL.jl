@@ -10,7 +10,6 @@ const atcg_comp = Dict{Char, Char}('a'=>'t', 'A'=>'T',
                                    'c'=>'g', 'C'=>'G',
                                    'g'=>'c', 'G'=>'C',
                                    't'=>'a', 'T'=>'A')
-
 # kernel thread-block setup
 const threads_1d = 512;
 const threads_2d = 32;

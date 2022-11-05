@@ -1,4 +1,3 @@
-
 struct ground_truth{T <: Integer, T2 <: Integer}
     mode_parts::Vector{Tuple{T,T}}              # (mode, k)
     num_mp::T
@@ -175,17 +174,6 @@ end
 
 sum_range(rs::Vector{UnitRange}) = sum(sum_range_vec(rs));
 
-# function num_overlap(r1::UnitRange, r2::UnitRange)
-#     @assert r1[1] ≤ r1[end] && r2[1] ≤ r2[end] "range is not valid"
-#     if r1[1] ≤ r2[1] ≤ r1[end]
-#         return min(r1[end],r2[end])-r2[1]+1;
-#     elseif  r2[1] ≤ r1[1] ≤ r2[end]
-#         return min(r1[end],r2[end])-r1[1]+1;
-#     else
-#         return 0;
-#     end
-# end
-
 #= 
 Return the unit ranges in bg that does not intersect with ground truths
 e.g. r_bg = 1:100
@@ -324,14 +312,10 @@ function get_performance(data, ms)
         gt_overlaps, bg_overlaps = get_overlaps(gt, ms, data);
 
     sum_overlap = sum(gt_overlaps);
-    # gt_cover_ratio = sum(gt_overlaps) ./ gt_area;
-    # gt_n_cover = 1 - gt_cover_ratio;
-     
 
     perf_coeff  = round(sum_overlap/(activated_f_area + gt_area - sum_overlap), digits=2)
     sensitivity = round(sum_overlap/activated_f_area, digits=2)
     specifity   = round(sum_overlap/gt_area, digits=2)
-    # fp_ratio = sum(bg_overlaps)/activated_f_area;
     
     return perf_coeff, sensitivity, specifity    
 end

@@ -268,8 +268,8 @@ function plot_cooccurrence(ms,
                            save_loc::String; 
             alphas=[-1, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60]
             )
-    Cdlunroll.overlapping_scan_both!(ms, data); 
-    Cdlunroll.non_overlap_scan_both!(ms, data);
+    overlapping_scan_both!(ms, data); 
+    non_overlap_scan_both!(ms, data);
     activate_counts = Int.(get_activate_counts(ms));
     activate_counts = activate_counts[sort_perm];
 
@@ -288,7 +288,6 @@ function plot_cooccurrence(ms,
         pmis = get_pmi(dict_merged, normalize_factor, marginal_count_left, marginal_count_right);
         config_used_vec = get_config_used_vec(pmis, use_vec);
         remapped_key = remap_filter_num(sort_perm, config_used_vec);
-        # println("remapped key: $remapped_key")
         npmis = [round(pmis[c]/(-log2(length(dict_merged[c])/normalize_factor)), digits=2) 
             for c in config_used_vec];
         co_occ_count = [length(dict_merged[c]) for c in config_used_vec];

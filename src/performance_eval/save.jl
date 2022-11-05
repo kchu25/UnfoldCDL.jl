@@ -5,7 +5,7 @@ const grey_tag_front = "<p style=\"color:grey\">"
 const grey_tag_back = "</p>"
 
 function get_significant_motif_positions_pvec(ms, data, alpha_fisher)
-    pval_vec = Cdlunroll.get_fisher_p_values(ms, data; test=true)
+    pval_vec = get_fisher_p_values_(ms, data; test=true)
     return pval_vec, pval_vec .< alpha_fisher;
 end
 
@@ -99,10 +99,6 @@ function save_pfms_as_transfac_noXY_weblogo(logo_folder::String, ms, sort_perm::
     end
 end
 
-# function get_html_template()
-
-
-
 get_folder_names(target_folder::String) = 
     target_folder*"/"*logo_folder_name, target_folder*"/"*pics_folder_name
 
@@ -143,7 +139,6 @@ function save_result(ms, data,
                      target_folder, pval_cut_off;
                      alphas=[-1, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60]
                      )
-
     logo_folder, pics_folder = get_folder_names(target_folder);
     make_folder_paths(target_folder, logo_folder, pics_folder);
     p_vec, use_vec = 

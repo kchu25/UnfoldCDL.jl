@@ -202,14 +202,14 @@ html_template_no_alpha_valid=mt"""<!DOCTYPE html>
                                         } else {
                                             orientation.innerHTML = "Learned PWM";
                                         }
-                                    }						 
-                        </script>	
+                                    }
+                        </script>
                     </tr>
-                    {{/:DF}}		
+                    {{/:DF}}
                 </tbody>
             </table>
-            <br><br>	
-        </div>	
+            <br><br>
+        </div>
     </div>
 </body>
 </html>

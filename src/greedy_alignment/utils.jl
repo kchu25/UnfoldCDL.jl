@@ -29,7 +29,6 @@ pval_thresh_dict_test = Dict{Int, float_type}(6=> 0.00025,
                                               15=>0.00025,
                                               )
 
-
 pval_thresh_dict = Dict{Int, float_type}(6=> 0.001275,
                                          7=> 0.000925,
                                          8=> 0.0009,
@@ -50,7 +49,6 @@ function get_thresh(pwms; test=false)
     float_type.([(pvalue2score(pwm, pval_threshs[ind])) for (ind,pwm) in enumerate(pwms)]);
 end
 
-
 function mat_compare2!(cmats, cmats_c, ccsum, ccsum_c, i, j, alpha_merge, marked_inds, merged_pair)
 
         col_k1_leq_col_k2_, offset_, pval_ = 
@@ -67,7 +65,6 @@ function mat_compare2!(cmats, cmats_c, ccsum, ccsum_c, i, j, alpha_merge, marked
             marked_inds[i] = true; marked_inds[j] = true;
             push!(merged_pair, (i,j,use_comp, offset, col_k1_leq_col_k2))
         end
-
 end
 
 function merge_count_mats2(count_mats, alpha_merge, diff_tol)

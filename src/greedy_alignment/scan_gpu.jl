@@ -63,13 +63,10 @@ function gpu_scan(ms, data; scan_bg=false)
 end
 
 function scan_w_gpu!(ms, data; scan_bg=false)
-    
     positions, scores, use_comp = gpu_scan(ms, data; scan_bg=scan_bg)
-
     if scan_bg
         ms.positions_bg = positions;
         ms.scores_bg = scores;
-        # ms.use_comp_bg = use_comp; # not needed
     else
         ms.positions = positions;
         ms.scores = scores;

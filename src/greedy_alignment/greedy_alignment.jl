@@ -21,10 +21,11 @@ end
 
 function run(ms, data, alpha_fisher, ic_expand_t, ic_shrink_t, diff_tol, allr_thresh, gpu; dep=false)
     gpu ? scan_trainset_gpu!(ms, data, dep) : scan_trainset_cpu!(ms, data, dep);
-    pvals = get_fisher_p_values(ms, data)
+    pvals = get_fisher_p_values_(ms, data);
     keep_f = pvals .< alpha_fisher
     keep_e = expansions_ms!(ms, data, keep_f; ic_expand_t=ic_expand_t, ic_shrink_t=ic_shrink_t)
-    keep = keep_e .& keep_f
+    # TODO: get rid of small PWMs
+    keep = keep_e .& keep_f 
     count_mats_ = posdicts2countmats(ms, keep, data.data_matrix);
     if dep
         ms_pos = posdict2pos_keeponly(ms, keep_f)
@@ -50,13 +51,11 @@ function greedy_alignment(new_cmats, data;
                           dep_run=5,
                           diff_tol=4,
                           gpu=false)
-    ms = Cdlunroll.countmats2motifs(new_cmats);
+    ms = countmats2motifs(new_cmats);
     data.data_matrix_gpu = reshape(data.data_matrix_gpu, (size(data.data_matrix_gpu,1), data.N));
     data.data_matrix_bg_gpu = reshape(data.data_matrix_bg_gpu, (size(data.data_matrix_bg_gpu,1), data.N));
 
     for t = 1:indep_run
-        # @info "overlapping scan $t"
-        # @info "num motifs: $(ms.num_motifs)"
         ms = run(ms, data, alpha_fisher, ic_expand_t, ic_shrink_t, diff_tol, allr_thresh, gpu)        
     end
     for _ = 1:dep_run

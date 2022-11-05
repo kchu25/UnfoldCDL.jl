@@ -145,4 +145,3 @@ struct cuda_fft_plans
     end
 end
 
-
