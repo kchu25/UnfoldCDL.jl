@@ -61,5 +61,4 @@ struct CDL
     end
 end
 
-
 Flux.@functor CDL

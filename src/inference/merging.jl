@@ -252,8 +252,8 @@ diff_small(t1::mat, t2::mat, diff_tol) = abs(t1.len-t2.len) < diff_tol;
 get_count_mat(t::mat) = t.count_mat;
 
 function merging_count_mats(count_mats, new_pos, data, ic_shrink_t, diff_tol; allr_thresh=0.25)
-    count_mats_c = Cdlunroll.mat_complement.(count_mats);
-    pfms = Cdlunroll.countmat2pfm.(count_mats);
+    count_mats_c = mat_complement.(count_mats);
+    pfms = countmat2pfm.(count_mats);
     pfms_c = reverse.(pfms);
 
     @inbounds my_cmats = [mat(count_mats[i], 
@@ -340,7 +340,6 @@ function get_j_increments_merge_up(merged_i_1_info::Vector{merged_info},
 
             front_Δ[ind] = -(i_front_Δ - (mi.comp ? Δ : mi.offset_i));
             back_Δ[ind]  = (i_back_Δ - (mi.comp ? mi.offset_i : Δ))
-            # println(ind, " ",  mi.len, " ", (mi.offset_i+len_i), " ", len_i)
         end
     end
     return front_Δ, back_Δ
@@ -351,7 +350,6 @@ function get_j_increments_no_merge_up(merged_i_1_info::Vector{merged_info},
                         )
     front_Δ = zeros(Int, length(merged_i_1_info))
     back_Δ  = zeros(Int, length(merged_i_1_info))
-    # figure out the signs here so that only addition operation is needed later on 
     for (ind, mi) in enumerate(merged_i_1_info)
         if !mi.lq_this
             @assert !isnothing(mi.offset_j) "offset_j nothing"

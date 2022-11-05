@@ -104,12 +104,9 @@ function CSC(S, cdl, len, hp, projs)
     z_mask = batch_prep_csc(size(S,3), len, projs)    
     D_init1, D_init2, eta, lambda = square_non_neg_params_csc(cdl)
     Z, DᵀS = initial_stage(D_init1, S, z_mask, eta, lambda)
-
-    # num_iter = num_iter_default ? hp.K_c : 10;
     for k_c = 1:hp.K_c
         Z = SparseCoding(Z, DᵀS, D_init2, z_mask, eta, lambda, k_c, len, hp)   
     end
-
     return Z
 end
 
@@ -132,7 +129,6 @@ function network_loss(Z, D_, S, len, hp, projs)
     D__ = reshape(D_, (hp.f_len, hp.M))
     DᵀD = D__'*D__;
     (1.0/len.N)*sum((DZ - S).^2) +  hp.gamma_1*sum((DᵀD - DᵀD .* projs.qI).^2) 
-    # (1.0/len.N)*sum(abs.(DZ - S)) +  hp.gamma_1*sum((DᵀD - DᵀD .* projs.qI).^2) 
 end
 
 # forward propagation (for small batches)
@@ -176,16 +172,3 @@ function CSC_full(S, cdl, len, hp, projs)
     end
     return Z
 end
-
-
-
-# function CDLforward_full()
-
-# checking the loss on the first training set (only do this when training set is not huge)
-# function Network_full_loss(S, cdl, len, hp, projs, ffts; until_converge=false)
-#     Z = CSC_full(S, cdl, len, hp, projs; until_converge=until_converge)    
-#     Zr  = reverse(Z, dims=1);   
-#     ZᵀZ = CuArray{float_type,3}(undef, (len.cc_vlen, hp.M, len.Nf));
-#     ZᵀS = CuArray{float_type,3}(undef, (len.cs_vlen, hp.M, len.Nf));
-# end
-

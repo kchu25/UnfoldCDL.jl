@@ -11,4 +11,17 @@ const DNA_complement = Dict('A'=>'T', 'a'=>'t',
                       'G'=>'C', 'g'=>'c',
                       'T'=>'A', 't'=>'a');
 
+const vec_tup_t = NamedTuple{(:at, :f, :len, :f1_prev, :f2_prev, :f1_prev_loc, :f2_prev_loc), 
+                      NTuple{7, Int}}
+
+const pos_t = Tuple{UnitRange{Int}, Int};
+
+const topo_t = NamedTuple{(:f1, :f2, :f3, :d12, :d13), NTuple{5, Int}};
+
+const ndict_c_t = Dict{Tuple{Int,Int,Int,Int}, Bool}; # ndict's nested (child) dict type
+
+const ndict_t = Dict{Int, ndict_c_t};
+
+
+
 dna_comp(a::String) = join([DNA_complement[l] for l in reverse(a)]);

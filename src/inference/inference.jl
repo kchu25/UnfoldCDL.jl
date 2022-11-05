@@ -16,11 +16,9 @@ function obtain_count_matrices(Z,
                                 allr_thresh=0.25,
                                 diff_tol=4
                                 )
- 
-    ### get enriched triplets
+    # get the enriched triplets
     Z_nz = get_code_non_zero_components(Z);
     thresh = percentile_thresh_Z_nz(Z_nz; percentile=percentage_thresh)
-    # @info "Obtaining motif positions..."
     pos = obtain_pos(Z_nz, thresh, flen; k=k, count_thresh=esd_count_thresh, r=esd_r, alpha=esd_alpha)
     new_pos = get_expanded_pos(pos, data; 
                                ic_expand_thresh=ic_expand_t, 
@@ -28,7 +26,7 @@ function obtain_count_matrices(Z,
                                );
 
     sort!(new_pos, by=length, rev=true)
-    count_mats = Cdlunroll.countmat.([get_strs(data, new_pos, k) for k = 1:length(new_pos)]);
+    count_mats = countmat.([get_strs(data, new_pos, k) for k = 1:length(new_pos)]);
     new_cmats = merging_count_mats(count_mats, new_pos, data, ic_shrink_t, diff_tol; allr_thresh=allr_thresh)
     
     return new_cmats

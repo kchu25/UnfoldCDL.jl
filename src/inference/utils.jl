@@ -9,6 +9,14 @@ countmat2pfm(count_matrix; ps=1f0) =
 freq2pwm(pfm, float_type; b=[.25,.25,.25,.25]) = 
     float_type.(log2.(pfm ./ b))
 
+get_code_non_zero_components(Z) = Z[1:4:end,:,:];
+
+function percentile_thresh_Z_nz(Z_nz; percentile= 0.0055)
+    Z_nz_sorted = sort((@view Z_nz[:]))
+    ind = Int(round(length(Z_nz_sorted) * (1.0 - percentile)))
+    return Z_nz_sorted[ind]
+end
+    
 function get_strs(data, pos, k)
     strs = Vector{String}()
     for (range_, n) in pos[k]

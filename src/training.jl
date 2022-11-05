@@ -50,7 +50,6 @@ function training_prep(M, f, batch_size, K_c, gamma_1, pool_mask_len, pool_strid
     cdl             = Cdlunroll.CDL(hp, 1, K_c+1);
     ps              = Flux.params(cdl);
     # opt             = Flux.AdaBelief()
-    # opt             = Flux.AdaBelief(0.0002)
     opt             = Flux.AdaBelief(learning_rate)
     return hp, data_load, len, projs, ffts, cdl, ps, opt
 end
@@ -82,23 +81,16 @@ function train_basic(data_matrix;
             gs = gradient(ps) do 
                 CDLforward(d, cdl, len, hp, projs, ffts)
             end
-           
-            Flux.Optimise.update!(opt, ps, gs) ## update parameters                
+            Flux.Optimise.update!(opt, ps, gs) # update parameters                
         end
-
         # just to show the training loss
         if iter % 5 == 0 
             @info "$iter epoch done."
-            # @info "μ: $(cdl.mu)"
-            # @info "λ: $(cdl.lambda)"
+
             loss_value = CDLforward(first(data_load) |> gpu, cdl, len, hp, projs, ffts);
             @info "epoch: $iter, batch loss: $loss_value"
-            # isnan(loss_value) && (@info "nan loss"; return error("nan gradient"))
         end
     end
-    # @info "Obtaining the sparse code..."
-    # D, _  = CDLforward(first(data_load) |> gpu, cdl, len, hp, projs, ffts; get_parameters=true);
-    # Z = CSC_full(data_load.data |> gpu, cdl, len, hp, projs);
     D, Z = retrieve_sparse_representation(data_matrix, len, projs, hp, ffts, cdl)
     return Z, D
 end
