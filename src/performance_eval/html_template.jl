@@ -1,4 +1,4 @@
-html_template_has_alpha_valid=mt"""<!DOCTYPE html>
+const html_template_has_alpha_valid=mt"""<!DOCTYPE html>
 <html>
 <meta charset="utf-8">
 <head>
@@ -120,7 +120,7 @@ html_template_has_alpha_valid=mt"""<!DOCTYPE html>
 </html>
 """
 
-html_template_no_alpha_valid=mt"""<!DOCTYPE html>
+const html_template_no_alpha_valid=mt"""<!DOCTYPE html>
 <html>
 <meta charset="utf-8">
 <head>

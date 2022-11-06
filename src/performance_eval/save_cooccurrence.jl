@@ -1,4 +1,3 @@
-
 function fill_LMN_cube(data, ms, N)
     # fill the cube with activation indicators
     LMN_cube_pos  = falses(data.L, ms.num_motifs, N);
@@ -208,7 +207,6 @@ function plot_cooccurrence_png(dict_merged, remapped_key,
         k < K && linkxaxes!(right_motif_axs[k], right_motif_axs[k+1])
         k < K && linkxaxes!(left_motif_axs[k], left_motif_axs[k+1])
         m1, m2, uc1, uc2 = remapped_key[k]
-        # m1, m2, uc1, uc2 = config_used_vec[k];
         if uc1 == 1 && uc2 == 1
             image!(left_motif_axs[k], rotr90(reverse(pwms_img[m2], dims=2)))
             image!(right_motif_axs[k], rotr90(pwms_img[m1]))  
@@ -226,7 +224,6 @@ function plot_cooccurrence_png(dict_merged, remapped_key,
         right_motif_axs[k].xlabelsize=text_size-1;
     end
    
-
     @inbounds for k = 1:K-1 linkxaxes!(plot_axs[k], plot_axs[k+1]) end
     @inbounds for k = 1:K-1 hidedecorations!(plot_axs[k], grid=false) end
 
@@ -246,7 +243,6 @@ function plot_cooccurrence_png(dict_merged, remapped_key,
             text!(plot_axs[k], "# co-occ: $(co_occ_count[k]) ", 
                 position = (alpha-3, 1.13), textsize=text_size)
         end
-        # axislegend(plot_axs[k],["",""], ["PMI: ", ""], position = (1, 1.35))
     end
 
     for k = 1:K
@@ -268,11 +264,6 @@ function plot_cooccurrence(ms,
                            save_loc::String; 
             alphas=[-1, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60]
             )
-    overlapping_scan_both!(ms, data); 
-    non_overlap_scan_both!(ms, data);
-    activate_counts = Int.(get_activate_counts(ms));
-    activate_counts = activate_counts[sort_perm];
-
     LMN_cube_pos, LMN_cube_comp = 
         fill_LMN_cube(data, ms, data.N+data.N_test);
     alpha_ind = length(alphas); alpha = alphas[alpha_ind];
@@ -310,6 +301,5 @@ function plot_cooccurrence(ms,
         filter_dict_merge_w_alpha!(dict_merged, alpha);
     end
 
-
-    return valid_alphas, activate_counts
+    return valid_alphas
 end

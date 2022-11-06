@@ -14,7 +14,8 @@ function train_and_get_perf(data;
     ms = nothing;
     while num_trials > 0
         try
-            @time Z, D = train_basic(data.data_matrix; 
+            @info "Training uCDL..."
+            Z, _ = train_basic(data.data_matrix; 
                                 M=M, 
                                 num_epochs=num_epochs, 
                                 f=flen, 
@@ -23,9 +24,8 @@ function train_and_get_perf(data;
                                 batch_size=batch_size,
                                 learning_rate=learning_rate);
 
-            # allr_thresh = 0.25
-            
-            @time new_cmats = obtain_count_matrices(Z, 
+            @info "Obtaining enriched triplets as PWMs..."
+            new_cmats = obtain_count_matrices(Z, 
                                 data, flen;
                                 esd_alpha=esd_alpha,
                                 esd_r=esd_r, k=k,
@@ -36,8 +36,8 @@ function train_and_get_perf(data;
                                 allr_thresh=allr_thresh,
                                 diff_tol=diff_tol);
         
-            # new_cmats = new_cmats[size.(new_cmats,2) .> 5]
-            @time ms = greedy_alignment(new_cmats, data;
+            @info "Greedy alignment..."
+            ms = greedy_alignment(new_cmats, data;
                                         allr_thresh=allr_thresh,
                                         alpha_fisher=alpha_fisher,
                                         ic_expand_t=ic_expand_t,
@@ -64,8 +64,21 @@ function train_and_get_perf(data;
     return ms
 end
 
-function find_motif(input_fasta::String, output_folder::String; p_value_cutoff=1e-6)
+function set_output_folder(input_fasta, output_folder)
+    fasta_name = split(input_fasta, "/")[end];
+    output_folder = 
+        output_folder[end] == '/' ? 
+            output_folder*fasta_name : 
+                output_folder*"/"*fasta_name;
+    return output_folder*"_result"
+end
+
+function find_motif(input_fasta::String, output_folder::String; 
+                    p_value_cutoff=1e-6, co_occurrence_results=true)
+    output_folder = set_output_folder(input_fasta, output_folder);    
     data = FASTA_DNA{Float32}(input_fasta); 
     ms = train_and_get_perf(data);
-    save_result(ms, data, output_folder, p_value_cutoff)
+    @info "Saving the results..."
+    save_result(ms, data, output_folder, p_value_cutoff; 
+        co_occurrence_results=co_occurrence_results);
 end

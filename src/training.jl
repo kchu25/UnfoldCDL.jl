@@ -65,10 +65,10 @@ function train_basic(data_matrix;
                      pool_stride   = 4,
                      learning_rate = 0.0003
                      )
-
+    
     N = size(data_matrix,3);   
     batch_size = N < batch_size ? N-1 : batch_size;
-    @info "# filters: $M , filter length: $f, epochs: $num_epochs, # coding layers: $K_c, γ: $gamma_1, batch size: $batch_size, learning_rate: $learning_rate"
+    # @info "# filters: $M , filter length: $f, epochs: $num_epochs, # coding layers: $K_c, γ: $gamma_1, batch size: $batch_size, learning_rate: $learning_rate"
     N % batch_size == 0 && (batch_size = batch_size + 1)
 
     hp, data_load, len, projs, ffts, cdl, ps, opt =
@@ -84,12 +84,12 @@ function train_basic(data_matrix;
             Flux.Optimise.update!(opt, ps, gs) # update parameters                
         end
         # just to show the training loss
-        if iter % 5 == 0 
-            @info "$iter epoch done."
+        # if iter % 5 == 0 
+        #     @info "$iter epoch done."
 
-            loss_value = CDLforward(first(data_load) |> gpu, cdl, len, hp, projs, ffts);
-            @info "epoch: $iter, batch loss: $loss_value"
-        end
+        #     loss_value = CDLforward(first(data_load) |> gpu, cdl, len, hp, projs, ffts);
+        #     @info "epoch: $iter, batch loss: $loss_value"
+        # end
     end
     D, Z = retrieve_sparse_representation(data_matrix, len, projs, hp, ffts, cdl)
     return Z, D

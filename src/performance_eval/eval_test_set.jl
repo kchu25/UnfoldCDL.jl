@@ -97,8 +97,6 @@ function get_gt_test(motif::mixture_gapped_k_block_motif, data)
             motif_mode = data.raw_data_test[n].complement ? reverse(motif.modes[mode_]) : motif.modes[mode_]
             len_here = data.raw_data_test[n].complement ? lens[motif_mode] : lens[motif_mode]
 
-            # len_here = data.raw_data[n].complement ? lens_rv : lens;
-
             for (ind,s) in enumerate(str)                
                 if isuppercase(s) 
                     if !upper_on && counter == 0 
@@ -130,7 +128,6 @@ function get_gt_test(motif::mixture_gapped_k_block_motif, data)
     end
     ground_truth(mode_parts, length(mode_parts), covering, lens)
 end
-
 
 function get_overlaps_test(gt::ground_truth, ms, data)
     L = data.L;

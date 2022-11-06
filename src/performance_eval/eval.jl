@@ -138,7 +138,6 @@ function get_gt(motif::mixture_gapped_k_block_motif, data)
     ground_truth(mode_parts, length(mode_parts), covering, lens)
 end
 
-
 #= 
 return an ordered (according to mode_parts) array of 
 covering starts for each mode_parts in seqeunce n 
@@ -160,11 +159,7 @@ overlap(r1::UnitRange, r2::UnitRange) = r1[1] ≤ r2[1] ≤ r1[end] || r1[1] ≤
 not_found(g_start::Integer, f_start::Integer) = g_start == -1 || f_start == -1;
 appeared(r::UnitRange) = r[1] != -1 && r[end] != -1;
 
-# sum_range_vec(rs::Vector{UnitRange}) = 
-#     [r[1] != -1 ? r[end]-r[1]+1 : 0 for r in rs];
-
 sum_range_each(r) = r[end]-r[1]+1
-# sum_range_vec(rs::Vector{Vector{UnitRange}}) = map(x->sum(sum_range_each.(x)), rs)
 
 function sum_range_vec(rs::Vector{Vector{UnitRange}})
     reduced_rs = reduce(vcat, rs)

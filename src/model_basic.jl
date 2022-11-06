@@ -37,7 +37,6 @@ struct CDL
     mu::Array{float_type, 1}
 
     function CDL(hp, K_d, K_c_p1; η₁=0.0005, η₂=-0.001)    
-        @info "Initializing the CDL model..."
         # K_d: number of iterations for CDL
         # K_c_p1: number of iterations for CSC plus 1 (for the initial iteration)
         # η₁,η₂: factor to make the number small

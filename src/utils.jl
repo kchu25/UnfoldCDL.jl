@@ -55,8 +55,6 @@ mutable struct projectors
     qI::CuArray{float_type, 2}
 
     function projectors(hp, len)
-        @info "Constructing projectors..."
-        # mapfrange   = spzeros(hp.f_len, len.cs_vlen);
         mapfrange   = zeros(hp.f_len, len.cs_vlen);
         mapfrange[1:hp.f_len, len.C:len.C+len.f_len_inc] = Matrix(I, hp.f_len, hp.f_len);
         mapfrange   = cu(mapfrange);
@@ -86,7 +84,6 @@ mutable struct projectors
 end
 
 struct cuda_fft_plans
-    # for normal batch
     rFzz_n::CUDA.CUFFT.rCuFFTPlan{float_type, -1, false, 3}
     irFzz_n::AbstractFFTs.ScaledPlan{ComplexF32, CUDA.CUFFT.rCuFFTPlan{ComplexF32, 1, false, 3}, float_type}
     rFzs_n::CUDA.CUFFT.rCuFFTPlan{float_type, -1, false, 3}
@@ -106,7 +103,6 @@ struct cuda_fft_plans
     irFzs_1::AbstractFFTs.ScaledPlan{ComplexF32, CUDA.CUFFT.rCuFFTPlan{ComplexF32, 1, false, 3}, float_type}
 
     function cuda_fft_plans(len, hp)
-        @info "Constructing FFT plans..."
         Zr_padded_z = CuArray{float_type,3}(undef, (len.cc_vlen, hp.M, len.N));
         Zr_padded_s = CuArray{float_type,3}(undef, (len.cs_vlen, hp.M, len.N));
         S_padded  = CuArray{float_type,3}(undef, (len.cs_vlen,1,len.N));

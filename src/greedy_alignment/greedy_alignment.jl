@@ -24,8 +24,8 @@ function run(ms, data, alpha_fisher, ic_expand_t, ic_shrink_t, diff_tol, allr_th
     pvals = get_fisher_p_values_(ms, data);
     keep_f = pvals .< alpha_fisher
     keep_e = expansions_ms!(ms, data, keep_f; ic_expand_t=ic_expand_t, ic_shrink_t=ic_shrink_t)
-    # TODO: get rid of small PWMs
-    keep = keep_e .& keep_f 
+    # get rid of small PWMs (less than 4 columns)
+    keep = keep_e .& keep_f .& (ms.lens .> 4)
     count_mats_ = posdicts2countmats(ms, keep, data.data_matrix);
     if dep
         ms_pos = posdict2pos_keeponly(ms, keep_f)
@@ -55,7 +55,7 @@ function greedy_alignment(new_cmats, data;
     data.data_matrix_gpu = reshape(data.data_matrix_gpu, (size(data.data_matrix_gpu,1), data.N));
     data.data_matrix_bg_gpu = reshape(data.data_matrix_bg_gpu, (size(data.data_matrix_bg_gpu,1), data.N));
 
-    for t = 1:indep_run
+    for _ = 1:indep_run
         ms = run(ms, data, alpha_fisher, ic_expand_t, ic_shrink_t, diff_tol, allr_thresh, gpu)        
     end
     for _ = 1:dep_run

@@ -12,8 +12,6 @@ function allr(p, q, p_count, q_count, bg)
         a2=sum(nb_q .* pfm2pwm(view_p_col, bg));
         push!(allr_score, (a1+a2)/(sum(nb_p)+sum(nb_q)))
     end
-    # println(allr_score)
-    # sort!(allr_score, rev=true);
     return sum(allr_score)
 end
 
@@ -30,11 +28,8 @@ function convolve_allr(pfm_c2, pfm,
                        )
     #= len_pfm_c2 will always be smaller since we've select the ones
         with minimal length
-    =#
-    # n_cols = Int(floor(perc_col*len_pfm_c2));
+    =#;
     allrs = Float64[];
-    # start and end indices for pwms
-    # s1e2 for pfm_c2, s2e2 for pfm
     s1e1s = UnitRange{Int}[];
     s2e2s = UnitRange{Int}[];
     l_dec_1 = Int[]; l_dec_2 = Int[]; 
@@ -138,7 +133,6 @@ function get_result_tuple_for_all_jaspar_render(ms,
                  details_link
                  ) 
 end
-
 
 function save_jaspar_and_get_result_tuple(ms, data,
                                    target_folder, 
