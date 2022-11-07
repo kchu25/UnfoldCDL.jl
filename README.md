@@ -6,8 +6,10 @@
 [![Coverage](https://codecov.io/gh/kchu25/uCDL.jl/branch/main/graph/badge.svg)](https://codecov.io/gh/kchu25/uCDL.jl)
 
 # What is uCDL?
+uCDL (Unfolded Convolutional Dictionary Learning) is a method for motif discovery. We first formulate a convolutional dictionary learning problem, and then "unfold" its optimization method into a neural network. The training of the network is fast. The resulting a network is fully interpretable, and outputs a sparse representation of the dataset. The sparse representation allow us to carry out efficient inference to discover motifs.
 
 ## Why use uCDL for motif discovery?
+
 
 # How to Install
 We are currently adding this package to the Julia registry. Once it's added, the user can simply install our package via the Julia's package manager:
@@ -53,4 +55,9 @@ find_motif_fasta_folder(<fasta-folder-path>, <output-folder>)
 - Perform motif discovery on all the fasta files in the `<fasta-folder-path>`, and 
 - Output each of the results in a pre-specified folder `<output-folder>`.<br><br>
 
+# Citing uCDL
 
+If you use `uCDL` in your work, please cite
+```
+Shane Kuei-Hsien Chu, Gary D Stormo, Deep unfolded convolutional dictionary learning for motif discovery, bioRxiv 2022.11.06.515322; doi: https://doi.org/10.1101/2022.11.06.515322
+```
