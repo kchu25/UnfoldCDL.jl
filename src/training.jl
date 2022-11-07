@@ -84,12 +84,11 @@ function train_basic(data_matrix;
             Flux.Optimise.update!(opt, ps, gs) # update parameters                
         end
         # just to show the training loss
-        # if iter % 5 == 0 
-        #     @info "$iter epoch done."
-
-        #     loss_value = CDLforward(first(data_load) |> gpu, cdl, len, hp, projs, ffts);
-        #     @info "epoch: $iter, batch loss: $loss_value"
-        # end
+        if iter % 5 == 0 
+            @info "$iter epoch done."
+            # loss_value = CDLforward(first(data_load) |> gpu, cdl, len, hp, projs, ffts);
+            # @info "epoch: $iter, batch loss: $loss_value"
+        end
     end
     D, Z = retrieve_sparse_representation(data_matrix, len, projs, hp, ffts, cdl)
     return Z, D

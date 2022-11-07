@@ -5,7 +5,7 @@ using Flux, Zygote, CUDA, FFTW, LinearAlgebra, Random,
       DataStructures, HypothesisTests, SimDNA, Mustache,
       DataFrames, Makie, CairoMakie, ColorSchemes, FastaLoader
 
-export find_motif
+export find_motif, find_motif_fasta_folder
 
 include("constants.jl")
 include("custom_Zygote_rules.jl")
@@ -35,7 +35,5 @@ include("performance_eval/eval_test_set.jl")
 include("performance_eval/save.jl")
 include("performance_eval/jaspar.jl")
 include("find_motif.jl")
-
-
 
 end

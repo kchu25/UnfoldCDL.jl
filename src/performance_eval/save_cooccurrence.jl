@@ -203,7 +203,6 @@ function plot_cooccurrence_png(dict_merged, remapped_key,
                for k=1:K];
 
     @inbounds for k = 1:K
-        # hidedecorations!(left_motif_axs[k]); hidedecorations!(right_motif_axs[k]); 
         k < K && linkxaxes!(right_motif_axs[k], right_motif_axs[k+1])
         k < K && linkxaxes!(left_motif_axs[k], left_motif_axs[k+1])
         m1, m2, uc1, uc2 = remapped_key[k]

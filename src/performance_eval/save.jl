@@ -36,7 +36,7 @@ function save_pfms_as_transfac(logo_folder::String, ms, sort_perm::Vector{Int})
         end
         println(io, "XX\t")
         close(io)            
-        Base.run(`weblogo -D transfac -f $(logo_folder)/d$(i).transfac -n 40 --errorbars NO -F png --fineprint " " --resolution 600 -s large --fontsize 16 --color-scheme classic -o $(logo_folder)/d$(i).png`);
+        Base.run(`weblogo -D transfac -f $(logo_folder)/d$(i).transfac -n 40 --errorbars NO -F png --fineprint " " --resolution 96 -s large --fontsize 16 --color-scheme classic -o $(logo_folder)/d$(i).png`);
 
         # do it for the reverse complement as well
         io = open(logo_folder*"/d$(i)_c.transfac", "w")
@@ -52,7 +52,7 @@ function save_pfms_as_transfac(logo_folder::String, ms, sort_perm::Vector{Int})
         end
         println(io, "XX\t")
         close(io)            
-        Base.run(`weblogo -D transfac -f $(logo_folder)/d$(i)_c.transfac -n 40 --errorbars NO -F png --fineprint " " --resolution 600 -s large --fontsize 16 --color-scheme classic -o $(logo_folder)/d$(i)_c.png`);
+        Base.run(`weblogo -D transfac -f $(logo_folder)/d$(i)_c.transfac -n 40 --errorbars NO -F png --fineprint " " --resolution 96 -s large --fontsize 16 --color-scheme classic -o $(logo_folder)/d$(i)_c.png`);
     end
 end
 
@@ -71,7 +71,7 @@ function save_pfms_as_transfac_noXY(logo_folder::String, ms, sort_perm::Vector{I
         end
         println(io, "XX\t")
         close(io)            
-        Base.run(`weblogo -D transfac -f $(logo_folder)/d$(i).transfac -n 40 --errorbars NO -F png -X NO -Y NO --fineprint " " --resolution 600 -s large --fontsize 32 --color-scheme classic -o $(logo_folder)/d$(i).png`);
+        Base.run(`weblogo -D transfac -f $(logo_folder)/d$(i).transfac -n 40 --errorbars NO -F png -X NO -Y NO --fineprint " " --resolution 96 -s large --fontsize 32 --color-scheme classic -o $(logo_folder)/d$(i).png`);
 
         # do it for the reverse complement as well
         io = open(logo_folder*"/d$(i)_c.transfac", "w")
@@ -87,14 +87,14 @@ function save_pfms_as_transfac_noXY(logo_folder::String, ms, sort_perm::Vector{I
         end
         println(io, "XX\t")
         close(io)            
-        Base.run(`weblogo -D transfac -f $(logo_folder)/d$(i)_c.transfac -n 40 --errorbars NO -F png -X NO -Y NO --fineprint " " --resolution 600 -s large --fontsize 32 --color-scheme classic -o $(logo_folder)/d$(i)_c.png`);
+        Base.run(`weblogo -D transfac -f $(logo_folder)/d$(i)_c.transfac -n 40 --errorbars NO -F png -X NO -Y NO --fineprint " " --resolution 96 -s large --fontsize 32 --color-scheme classic -o $(logo_folder)/d$(i)_c.png`);
     end
 end
 
 function save_pfms_as_transfac_noXY_weblogo(logo_folder::String, ms, sort_perm::Vector{Int})
     for i in sort_perm        
-        Base.run(`weblogo -D transfac -f $(logo_folder)/d$(i).transfac -n 40 --errorbars NO -F png -X NO -Y NO --fineprint " " --resolution 600 -s large --fontsize 32 --color-scheme classic -o $(logo_folder)/d$(i)_noxy.png`);      
-        Base.run(`weblogo -D transfac -f $(logo_folder)/d$(i)_c.transfac -n 40 --errorbars NO -F png -X NO  -Y NO --fineprint " " --resolution 600 -s large --fontsize 32 --color-scheme classic -o $(logo_folder)/d$(i)_c_noxy.png`);
+        Base.run(`weblogo -D transfac -f $(logo_folder)/d$(i).transfac -n 40 --errorbars NO -F png -X NO -Y NO --fineprint " " --resolution 96 -s large --fontsize 32 --color-scheme classic -o $(logo_folder)/d$(i)_noxy.png`);      
+        Base.run(`weblogo -D transfac -f $(logo_folder)/d$(i)_c.transfac -n 40 --errorbars NO -F png -X NO  -Y NO --fineprint " " --resolution 96 -s large --fontsize 32 --color-scheme classic -o $(logo_folder)/d$(i)_c_noxy.png`);
     end
 end
 
