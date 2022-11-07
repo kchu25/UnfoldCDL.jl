@@ -1,4 +1,4 @@
-module uCDL
+module UnfoldCDL
 
 using Flux, Zygote, CUDA, FFTW, LinearAlgebra, Random, 
       StatsBase, Distributions, StaticArrays, DoubleFloats,
