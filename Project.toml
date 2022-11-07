@@ -1,4 +1,4 @@
-name = "uCDL"
+name = "UCDLmotif"
 uuid = "dbccb84b-e307-4652-ba5b-383ef6e27386"
 authors = ["Shane Kuei-Hsien Chu (skchu@wustl.edu)"]
 version = "0.1.0"
