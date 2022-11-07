@@ -1,16 +1,16 @@
-using uCDL
+using UnfoldCDL
 using Documenter
 
-DocMeta.setdocmeta!(uCDL, :DocTestSetup, :(using uCDL); recursive=true)
+DocMeta.setdocmeta!(UnfoldCDL, :DocTestSetup, :(using UnfoldCDL); recursive=true)
 
 makedocs(;
-    modules=[uCDL],
+    modules=[UnfoldCDL],
     authors="Shane Kuei-Hsien Chu (skchu@wustl.edu)",
-    repo="https://github.com/kchu25/uCDL.jl/blob/{commit}{path}#{line}",
-    sitename="uCDL.jl",
+    repo="https://github.com/kchu25/UnfoldCDL.jl/blob/{commit}{path}#{line}",
+    sitename="UnfoldCDL.jl",
     format=Documenter.HTML(;
         prettyurls=get(ENV, "CI", "false") == "true",
-        canonical="https://kchu25.github.io/uCDL.jl",
+        canonical="https://kchu25.github.io/UnfoldCDL.jl",
         edit_link="main",
         assets=String[],
     ),
@@ -20,6 +20,6 @@ makedocs(;
 )
 
 deploydocs(;
-    repo="github.com/kchu25/uCDL.jl",
+    repo="github.com/kchu25/UnfoldCDL.jl",
     devbranch="main",
 )

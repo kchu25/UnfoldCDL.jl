@@ -102,7 +102,7 @@ uuid = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
 [[deps.Unicode]]
 uuid = "4ec0a83e-493e-50e2-b9ac-8f72acf5a8f5"
 
-[[deps.uCDL]]
+[[deps.UnfoldCDL]]
 path = ".."
 uuid = "dbccb84b-e307-4652-ba5b-383ef6e27386"
 version = "0.1.0"
