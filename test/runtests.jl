@@ -1,6 +1,6 @@
-using uCDL
+using UnfoldCDL
 using Test
 
-@testset "uCDL.jl" begin
+@testset "UnfoldCDL.jl" begin
     # Write your tests here.
 end
