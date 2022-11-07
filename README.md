@@ -54,9 +54,20 @@ find_motif_fasta_folder(<fasta-folder-path>, <output-folder>)
 - Perform motif discovery on all the fasta files in the `<fasta-folder-path>`, and 
 - Output each of the results in a pre-specified folder `<output-folder>`.<br><br>
 
-# Citing UnfoldCDL
+# Citation
 
-If you use `UnfoldCDL` in your work, please cite
+The paper for UnfoldCDL can be found at [https://www.biorxiv.org/content/10.1101/2022.11.06.515322v2](https://www.biorxiv.org/content/10.1101/2022.11.06.515322v2). It can be cited using the following BibTex entry:
 ```
-Shane K. Chu, Gary D. Stormo, Deep unfolded convolutional dictionary learning for motif discovery, bioRxiv 2022.11.06.515322; doi: https://doi.org/10.1101/2022.11.06.515322
+@article {Chu2022.11.06.515322,
+	author = {Chu, Shane Kuei-Hsien and Stormo, Gary D},
+	title = {Deep unfolded convolutional dictionary learning for motif discovery},
+	elocation-id = {2022.11.06.515322},
+	year = {2022},
+	doi = {10.1101/2022.11.06.515322},
+	publisher = {Cold Spring Harbor Laboratory},,
+	URL = {https://www.biorxiv.org/content/early/2022/11/07/2022.11.06.515322},
+	eprint = {https://www.biorxiv.org/content/early/2022/11/07/2022.11.06.515322.full.pdf},
+	journal = {bioRxiv}
+}
 ```
+
