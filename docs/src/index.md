@@ -1,14 +1,14 @@
 ```@meta
-CurrentModule = uCDL
+CurrentModule = UnfoldCDL
 ```
 
-# uCDL
+# UnfoldCDL
 
-Documentation for [uCDL](https://github.com/kchu25/uCDL.jl).
+Documentation for [UnfoldCDL](https://github.com/kchu25/UnfoldCDL.jl).
 
 ```@index
 ```
 
 ```@autodocs
-Modules = [uCDL]
+Modules = [UnfoldCDL]
 ```
