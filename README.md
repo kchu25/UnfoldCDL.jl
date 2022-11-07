@@ -8,3 +8,22 @@
 
 I'll update this page very soon.
 
+
+
+# Installation
+We are currently adding this package to the Julia registry. Once it's added, the user can simply install our package in Julia's package manager:
+```
+pkg> add uCDL
+```
+
+
+# Software requirements
+### Weblogo
+ This package requires [Weblogo](http://weblogo.threeplusone.com/manual.html#download). You need python3 and install Weblogo with following command:
+ ```bash
+ pip3 install weblogo
+ ```
+You can check if you have weblogo installed by typing:
+```bash
+weblogo -h
+```
