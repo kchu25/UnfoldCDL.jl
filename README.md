@@ -6,7 +6,7 @@
 [![Coverage](https://codecov.io/gh/kchu25/UnfoldCDL.jl/branch/main/graph/badge.svg)](https://codecov.io/gh/kchu25/UnfoldCDL.jl)
 
 # What is UnfoldCDL?
-UnfoldCDL (Unfolded Convolutional Dictionary Learning for Motif discovery) is a method for motif discovery. We first formulate a convolutional dictionary learning problem and then "unfold" its optimization algorithm into a neural network. The network is fully interpretable, fast to train, and outputs a sparse representation of the dataset. The sparse representation allows us to infer the motifs in the dataset efficiently.
+UnfoldCDL (Unfolded Convolutional Dictionary Learning) is a method for motif discovery. We first formulate a convolutional dictionary learning problem and then "unfold" its optimization algorithm into a neural network. The network is fully interpretable, fast to train, and outputs a sparse representation of the dataset. The sparse representation allows us to infer the motifs in the dataset efficiently.
 
 ## Why use UnfoldCDL for motif discovery?
 Many methods can find statistically significant motifs, but characterizing the binding modes of the motifs is harder. The motifs may have multiple modes: each mode may share similar patterns (multimeric binding, alternate structural conformations), have different "parts" (variable spacing), or have multiple motifs that look entirely dissimilar to each other (multiple DNA binding domains). Some traditional motif discovery method uses heuristic such as substring-masking to deal with the above scenarios, which leads to a sequential motif discovery method, and results in some secondary motif being masked and not revealed. The inference on the motifs using other black-box deep learning approaches is currently challenging.
