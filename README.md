@@ -5,9 +5,28 @@
 [![Build Status](https://github.com/kchu25/uCDL.jl/actions/workflows/CI.yml/badge.svg?branch=main)](https://github.com/kchu25/uCDL.jl/actions/workflows/CI.yml?query=branch%3Amain)
 [![Coverage](https://codecov.io/gh/kchu25/uCDL.jl/branch/main/graph/badge.svg)](https://codecov.io/gh/kchu25/uCDL.jl)
 
+# What is uCDL?
 
+# How to Install
+We are currently adding this package to the Julia registry. Once it's added, the user can simply install our package in Julia's package manager:
+```
+pkg> add uCDL
+```
 
-# Usage
+## Software requirements
+ This package requires [Weblogo](http://weblogo.threeplusone.com/manual.html#download). You need python3 and install Weblogo with following command:
+ ```bash
+ pip3 install weblogo
+ ```
+You can check if you have weblogo installed by typing:
+```bash
+weblogo -h
+```
+
+## Hardware requirements
+We require the user to have an Nvidia GPU; we plan to implement a CPU version in the future.
+
+# How to Use
 
 In Julia, import the uCDL package first:
 ````julia
@@ -34,22 +53,4 @@ find_motif_fasta_folder(<fasta-folder-path>, <output-folder>)
 
 
 
-# Installation
-We are currently adding this package to the Julia registry. Once it's added, the user can simply install our package in Julia's package manager:
-```
-pkg> add uCDL
-```
-
-# Software requirements
-### Weblogo
- This package requires [Weblogo](http://weblogo.threeplusone.com/manual.html#download). You need python3 and install Weblogo with following command:
- ```bash
- pip3 install weblogo
- ```
-You can check if you have weblogo installed by typing:
-```bash
-weblogo -h
-```
-
-# Hardware requirements
-We require the user to have an Nvidia GPU; we plan to implement a CPU version in the future.
+# CItation
