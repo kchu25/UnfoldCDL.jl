@@ -6,7 +6,7 @@
 [![Coverage](https://codecov.io/gh/kchu25/uCDL.jl/branch/main/graph/badge.svg)](https://codecov.io/gh/kchu25/uCDL.jl)
 
 # What is uCDL?
-uCDL (Unfolded Convolutional Dictionary Learning) is a method for motif discovery. We first formulate a convolutional dictionary learning problem, and then "unfold" its optimization method into a neural network. The training of the network is fast. The resulting a network is fully interpretable, and outputs a sparse representation of the dataset. The sparse representation allow us to carry out efficient inference to discover motifs.
+uCDL (Unfolded Convolutional Dictionary Learning) is a method for motif discovery. We first formulate a convolutional dictionary learning problem, and then "unfold" its optimization method into a neural network. The network is fully interpretable, fast to train, and outputs a sparse representation of the dataset. The sparse representation allow us to carry out efficient inference to discover motifs.
 
 ## Why use uCDL for motif discovery?
 
