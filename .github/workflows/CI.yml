@@ -54,6 +54,6 @@ jobs:
       - run: |
           julia --project=docs -e '
             using Documenter: DocMeta, doctest
-            using uCDL
-            DocMeta.setdocmeta!(uCDL, :DocTestSetup, :(using uCDL); recursive=true)
-            doctest(uCDL)'
+            using UnfoldCDL
+            DocMeta.setdocmeta!(UnfoldCDL, :DocTestSetup, :(using UnfoldCDL); recursive=true)
+            doctest(UnfoldCDL)'
