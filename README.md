@@ -7,8 +7,10 @@
 
 # What is uCDL?
 
+## Why use uCDL for motif discovery?
+
 # How to Install
-We are currently adding this package to the Julia registry. Once it's added, the user can simply install our package in Julia's package manager:
+We are currently adding this package to the Julia registry. Once it's added, the user can simply install our package via the Julia's package manager:
 ```
 pkg> add uCDL
 ```
@@ -52,5 +54,3 @@ find_motif_fasta_folder(<fasta-folder-path>, <output-folder>)
 - Output each of the results in a pre-specified folder `<output-folder>`.<br><br>
 
 
-
-# CItation
