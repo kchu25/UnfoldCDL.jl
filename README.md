@@ -6,7 +6,31 @@
 [![Coverage](https://codecov.io/gh/kchu25/uCDL.jl/branch/main/graph/badge.svg)](https://codecov.io/gh/kchu25/uCDL.jl)
 
 
-I'll update this page very soon.
+
+# Usage
+
+In Julia, import the uCDL package first:
+````julia
+using uCDL
+````
+<br>
+
+
+To do motif discovery on a single fasta file, execute
+````
+find_motif(<fasta-path>, <output-folder>)
+````
+- Perform motif discovery on the fasta file `<fasta-path>`, and 
+- Output the result in a pre-specified folder `<output-folder>`. <br><br>
+
+
+
+To do motif discovery on a batch of fasta files, execute
+````
+find_motif_fasta_folder(<fasta-folder-path>, <output-folder>)
+````
+- Perform motif discovery on all the fasta files in the `<fasta-folder-path>`, and 
+- Output each of the results in a pre-specified folder `<output-folder>`.<br><br>
 
 
 
@@ -15,7 +39,6 @@ We are currently adding this package to the Julia registry. Once it's added, the
 ```
 pkg> add uCDL
 ```
-
 
 # Software requirements
 ### Weblogo
@@ -27,3 +50,6 @@ You can check if you have weblogo installed by typing:
 ```bash
 weblogo -h
 ```
+
+# Hardware requirements
+We require the user to have an Nvidia GPU; we plan to implement a CPU version in the future.
