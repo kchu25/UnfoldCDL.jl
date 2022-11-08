@@ -6,7 +6,7 @@
 [![Coverage](https://codecov.io/gh/kchu25/UnfoldCDL.jl/branch/main/graph/badge.svg)](https://codecov.io/gh/kchu25/UnfoldCDL.jl)
 
 # Table of Contents
- * [What is UnfoldCDL?](#puffaligner)
+ * [What is UnfoldCDL?](#ucdl)
  * [How to Install?](#install)
  * [How to use?](#using)
  * [Citation](#cite)
