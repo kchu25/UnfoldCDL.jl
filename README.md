@@ -7,7 +7,7 @@
 
 # Table of Contents
  * [What is UnfoldCDL?](#puffaligner)
- * [How to Install](#install)
+ * [How to Install?](#install)
  * [How to use?](#using)
  * [Citation](#cite)
 
