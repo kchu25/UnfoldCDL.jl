@@ -6,7 +6,7 @@
 [![Coverage](https://codecov.io/gh/kchu25/UnfoldCDL.jl/branch/main/graph/badge.svg)](https://codecov.io/gh/kchu25/UnfoldCDL.jl)
 
 # What is UnfoldCDL?
-UnfoldCDL (Unfolded Convolutional Dictionary Learning) is a method for motif discovery. We first formulate a convolutional dictionary learning problem and then "unfold" its optimization algorithm into a neural network. The network is fully interpretable, fast to train, and outputs a sparse representation of the dataset. The sparse representation allows us to infer the motifs in the dataset efficiently.
+UnfoldCDL (**Unfolded Convolutional Dictionary Learning**) is a method for [DNA sequence motif discovery](https://en.wikipedia.org/wiki/Sequence_motif). We first formulate a convolutional dictionary learning problem and then "unfold" its optimization algorithm into a neural network. The network is *fully interpretable, fast to train*, and outputs a *sparse representation* of the dataset. The sparse representation allows us to infer the motifs in the dataset efficiently.
 
 ## Why use UnfoldCDL for motif discovery?
 Many methods can find statistically significant motifs, but they may be only "partially found" because motifs may have complex binding patterns. For example, motifs may have multiple modes: each mode may share similar patterns (multimeric binding, alternate structural conformations), have distinct "parts" (variable spacing), or have multiple motifs that look entirely dissimilar to each other (multiple DNA binding domains). Some traditional motif discovery method uses heuristics such as substring-masking to deal with the above scenarios, which leads to a sequential motif discovery method, and results in some secondary motif being masked and not revealed. The inference on the motifs using other black-box deep learning approaches is currently challenging.
@@ -56,7 +56,7 @@ find_motif_fasta_folder(<fasta-folder-path>, <output-folder>)
 
 # Citation
 
-The paper for UnfoldCDL can be found at [https://www.biorxiv.org/content/10.1101/2022.11.06.515322v2](https://www.biorxiv.org/content/10.1101/2022.11.06.515322v2). It can be cited using the following BibTex entry:
+The paper for UnfoldCDL is at [https://www.biorxiv.org/content/10.1101/2022.11.06.515322v2](https://www.biorxiv.org/content/10.1101/2022.11.06.515322v2). It can be cited using the following BibTex entry:
 ```
 @article {Chu2022.11.06.515322,
 	author = {Chu, Shane Kuei-Hsien and Stormo, Gary D},
