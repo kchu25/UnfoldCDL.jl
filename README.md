@@ -16,7 +16,7 @@ The sparse representation we obtained from UnfoldCDL reveals where the enriched 
 
 # How to Install
 We are currently adding this package to the Julia registry. Once it's added, the user can simply install our package via the Julia's package manager:
-```
+```julia
 pkg> add UnfoldCDL
 ```
 
@@ -39,7 +39,7 @@ using UnfoldCDL
 
 
 To do motif discovery on a single fasta file, execute
-````
+````julia
 find_motif(<fasta-path>, <output-folder>)
 ````
 - Perform motif discovery on the fasta file `<fasta-path>`, and 
@@ -48,7 +48,7 @@ find_motif(<fasta-path>, <output-folder>)
 
 
 To do motif discovery on a batch of fasta files, execute
-````
+````julia
 find_motif_fasta_folder(<fasta-folder-path>, <output-folder>)
 ````
 - Perform motif discovery on all the fasta files in the `<fasta-folder-path>`, and 
