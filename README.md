@@ -21,6 +21,8 @@ Many methods can find statistically significant motifs, but the motifs in the da
 
 The sparse representation we obtained from UnfoldCDL reveals where the enriched patterns are in the dataset, and we seek to use such representation to discover all the motifs simultaneously.
 
+We found many unreported motifs on the [JASPAR](https://jaspar.genereg.net/) datasets. Check our preprint's result section for detail.
+
 
 # How to Install <a name="install"></a>
 We are currently adding this package to the Julia registry. Once it's added, the user can simply install our package via the Julia's package manager:
