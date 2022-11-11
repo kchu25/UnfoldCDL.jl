@@ -66,7 +66,7 @@ find_motif_fasta_folder(<fasta-folder-path>, <output-folder>)
 
 # Citation <a name="cite"></a>
 
-The paper for UnfoldCDL is at [https://www.biorxiv.org/content/10.1101/2022.11.06.515322v2](https://www.biorxiv.org/content/10.1101/2022.11.06.515322v2). It can be cited using the following BibTex entry:
+The paper for UnfoldCDL is at [https://www.biorxiv.org/content/10.1101/2022.11.06.515322v3](https://www.biorxiv.org/content/10.1101/2022.11.06.515322v3). It can be cited using the following BibTex entry:
 ```
 @article {Chu2022.11.06.515322,
 	author = {Chu, Shane Kuei-Hsien and Stormo, Gary D},
@@ -74,9 +74,9 @@ The paper for UnfoldCDL is at [https://www.biorxiv.org/content/10.1101/2022.11.0
 	elocation-id = {2022.11.06.515322},
 	year = {2022},
 	doi = {10.1101/2022.11.06.515322},
-	publisher = {Cold Spring Harbor Laboratory},,
-	URL = {https://www.biorxiv.org/content/early/2022/11/07/2022.11.06.515322},
-	eprint = {https://www.biorxiv.org/content/early/2022/11/07/2022.11.06.515322.full.pdf},
+	publisher = {Cold Spring Harbor Laboratory},
+	URL = {https://www.biorxiv.org/content/early/2022/11/10/2022.11.06.515322},
+	eprint = {https://www.biorxiv.org/content/early/2022/11/10/2022.11.06.515322.full.pdf},
 	journal = {bioRxiv}
 }
 ```
